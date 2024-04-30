@@ -1,0 +1,38 @@
+\section{Docker-Commands}\label{sec:docker-commands}
+\subsection{Nützliche Commands}
+
+\begin{frame}
+    \slidehead
+    \vspace{-1em}
+    \vspace{-2pt}
+    \begin{itemize}[<+->]
+        \item \bashcommand{docker ps} Zeigt alle laufenden \textbf{Container}
+        \item \bashcommand{docker image ls} Zeigt alle lokal verfügbaren \textbf{Images}
+        \item \bashcommand{docker volume ls} Zeigt alle \textbf{Volumes}
+    \end{itemize}
+\end{frame}
+
+\subsection{Compose-Commands}
+\begin{frame}
+    \slidehead
+    \vspace{-1em}
+    \vspace{-2pt}
+    \begin{itemize}[<+->]
+        \item \bashcommand{docker compose up} Startet das Deployment (-d um es im Hintergrund zu starten)
+        \item \bashcommand{docker compose down} Stoppt das Deployment
+        \item \bashcommand{docker compose logs} Zeigt die Logs von den \textbf{Containern}
+    \end{itemize}
+\end{frame}
+
+
+\subsection{Debugging}
+\begin{frame}
+    \slidehead
+    \vspace{-1em}
+    \vspace{-3pt}
+    \begin{itemize}[<+->]
+        \item \bashcommand{docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]} führt einen Command im laufendem Container aus
+        \item \bashcommand{docker debug {CONTAINER|IMAGE} } Führt eine Shell im container aus (aktuell in der Beta)
+        \item \bashcommand{docker compose logs} Zeigt die Logs von den \textbf{Containern} die aus der \textbf{docker-compose} der aktuellen directory sind
+    \end{itemize}
+\end{frame}
