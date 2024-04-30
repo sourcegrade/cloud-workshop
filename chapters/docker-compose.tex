@@ -1,0 +1,73 @@
+\section{Docker-Compose}\label{sec:docker-compose}
+\subsection{Want some YAML?}
+
+\begin{frame}
+    \slidehead
+    \centering
+    \Large
+    Docker-Compose gibt die Möglichkeit, \\
+    ein komplexes Deployment mithilfe von einer
+    \textbf{docker-compose.yaml} \\
+    zu beschreiben und dann mit: \\
+    \normalsize
+    \bashcommand{docker compose up -d}
+    \Large
+    zu starten
+\end{frame}
+
+\subsection{Beispiel-Datei}
+\begin{frame}[fragile]
+    \slidehead
+    \vspace{-1em}
+    \small
+    % \begin{noindent}
+    \begin{codeBlock}{minted language=yaml, title=\codeBlockTitle{docker-compose.yaml}}
+        services:
+            database:
+                image: postgres:13.4-alpine
+                environment:
+                - POSTGRES_USER=hedgedoc
+                - POSTGRES_PASSWORD=password
+                - POSTGRES_DB=hedgedoc
+                volumes:
+                - database:/var/lib/postgresql/data
+                restart: always
+    \end{codeBlock}
+    % \end{noindent}
+\end{frame}
+\begin{frame}[fragile]
+    \slidehead
+    \vspace{-1em}
+    \small
+    % \begin{noindent}
+    \begin{codeBlock}{minted language=yaml}
+        app:
+            image: quay.io/hedgedoc/hedgedoc:1.9.9
+            environment:
+            - CMD_DB_URL=postgres://hedgedoc:password@database:5432/hedgedoc
+            - CMD_DOMAIN=localhost
+            - CMD_URL_ADDPORT=true
+            volumes:
+            - uploads:/hedgedoc/public/uploads
+    \end{codeBlock}
+    % \end{noindent}
+\end{frame}
+\begin{frame}[fragile]
+    \slidehead
+    \vspace{-1em}
+    \small
+    % \begin{noindent}
+    \begin{codeBlock}{minted language=yaml}
+        ports:
+            - "3000:3000"
+            restart: always
+            depends_on:
+            - database
+        volumes:
+            database:
+            uploads:
+    \end{codeBlock}
+    % \end{noindent}
+\end{frame}
+
+
