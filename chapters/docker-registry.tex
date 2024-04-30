@@ -1,0 +1,50 @@
+\section{Docker-Registry}\label{sec:docker-registry}
+\subsection{Was ist eine Registry}
+
+\begin{frame}
+    \slidehead
+    \Large
+    \centering
+    \vspace{-2pt}
+    \begin{itemize}[<+->]
+        \item Eine Docker-Registry speichert verschiedene \textbf{Images} ab.
+        \item Docker stellt dazu selbst eine Registry zur verfügung unter \\
+              https://hub.docker.com (Standard falls keine Registry spezifiziert)
+        \item Jeder kann selbst aber seine eigene Registry hosten ähnlich zu \textbf{Git}
+    \end{itemize}
+    \normalsize
+    \only<4->{
+        \bashcommand{docker image pull myreg.local:5000/testing/test-image}
+        \bashcommand{docker image push myreg.local:5000/testing/test-image:latest}
+    }
+\end{frame}
+
+\subsection{Versionierung}
+
+\begin{frame}
+    \slidehead
+    \Large
+    \begin{itemize}[<+->]
+        \item Die Images bekommen alle einen \textbf{Tag} zur Versionierung, \\
+              wie z.B. \textbf{:latest}.
+        \item Dieser wird in den commands und in der docker-compose Datei an das Ende vom Image-Namen gehängt,
+              um die spezielle Version auszuwählen.
+        \item Dabei steht \textbf{:latest} meistens für die letzte stabile Version.
+    \end{itemize}
+\end{frame}
+
+\subsection{Auswahl in der Docker-Compose}
+\begin{frame}[fragile]
+    \slidehead
+    \Large
+    \centering
+    Falls \textbf{Images} aus einer speziellen Registry gepullt werden sollen, muss der Image-Bezeichner
+    mit der Registry geprefixt werden.
+    \vspace{1em}
+    \normalsize
+    \begin{codeBlock}{minted language=yaml}
+        services:
+        image:myreg.local:5000/testing/test-image:latest
+    \end{codeBlock}
+    \bashcommand{docker run myreg.local:5000/testing/test-image:latest}
+\end{frame}
