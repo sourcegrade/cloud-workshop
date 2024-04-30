@@ -1,0 +1,70 @@
+\section{Dockerfile}\label{sec:dockerfile}
+\subsection{Wie aus einem Projekt ein Image wird}
+
+\begin{frame}
+    \slidehead
+    \Large
+    \begin{itemize}[<+->]
+        \item Eine \textbf{Dockerfile} wird dazu benutzt, um aus eine Repository ähnlich zu einem Build-Process
+              ein Image zu erstellen.
+        \item Dazu wird die Datei \textbf{Dockerfile} erstellt, die die Instruktionen enthält, wie das Image gebaut wird.
+        \item In dieser sind Iterativ alle Schritte aufgelistet.
+    \end{itemize}
+\end{frame}
+
+\subsection{Beispiel-Dockerfile}
+\begin{frame}[fragile]
+    \slidehead
+    \centering
+    \begin{codeBlock}{title=\codeBlockTitle{Dockerfile}}
+        FROM node:18-alpine //Basisimage für Grunddependencies
+        WORKDIR /app //alle commands ab hier werden in /app ausgeführt
+        COPY . . //nimmt alles aus der Repository mit
+        RUN yarn install --production //führt Befehl im Image aus
+        CMD ["node", "src/index.js"] //Entrypoint für das Image
+        EXPOSE 3000 //interner Port der exposed werden soll
+    \end{codeBlock}
+\end{frame}
+
+\subsection{Wichtigsten Befehle}
+
+\begin{frame}
+    \slidehead
+    \Large
+    \begin{itemize}[<+->]
+        \item \textbf{FROM:} Nimmt ein existierendes Image, in dem Fall node mit der Version 18-alpine,
+              und baut auf diesem auf.
+        \item \textbf{WORKDIR: } Spezifiziert den Ordner, in der die App gebaut werden soll, damit sie nicht im
+              /-Ordner (root) gebaut wird.
+        \item \textbf{COPY: } Gibt an, welche Dateien aus der \textbf{Source-Repository} mitgenommen werden sollen.
+              Dabei ist das erste Argument aus der Repository während das zweite im Image ist.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \slidehead
+    \Large
+    \begin{itemize}[<+->]
+        \item \textbf{RUN: } führt einen beliebigen command, der in der Repository verfügbar ist aus.
+              Die Ausgabedateien bleiben dabei im Image. Soll dazu benutzt werden das Projekt zu Bauen.
+        \item \textbf{CMD: oder ENTRYPOINT:} beim starten des Images wird dieser Befehl ausgeführt.
+        \item \textbf{ARG: } setzt beim Bauen des Images die Umgebungsvariable var=wert
+    \end{itemize}
+\end{frame}
+
+\subsection{Bauen des Images}
+\begin{frame}
+    \slidehead
+    \Large
+    \centering
+    Ein Image kann ganz einfach mit dem Befehl:
+    \vspace{1em}
+    \normalsize
+    \bashcommand{docker build .}
+    \vspace{1em}
+    \Large
+    in der Repository wo die Dockerfile ist, gebaut werden.
+\end{frame}
+
+
+
