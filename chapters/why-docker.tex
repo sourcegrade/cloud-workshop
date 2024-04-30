@@ -1,0 +1,92 @@
+\section{Docker}\label{sec:docker}
+
+
+
+\begin{frame}[b]
+    \begin{center}
+        \fontsize{48pt}{48pt}
+        \faCodeBranch
+    \end{center}
+    \vfill
+    \begin{flushleft}
+        \Huge
+        \textbf{Docker}
+    \end{flushleft}
+\end{frame}
+
+\subsection{Warum Docker}\label{subsec:warumdocker}
+
+\begin{frame}[c]
+    \begin{columns}[c]
+        \begin{column}{.5\textwidth}
+            \centering
+            \includesvg[scale=5]{../pictures/alice}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \Large
+            \textcolor{TUDa-10a}{\textbf{Meet Alice}}
+            \only<2->{
+                \begin{itemize}
+                    \item<2-> Alice ist eine Softwareentwicklerin
+                    \item<3-> Alice arbeitet zusammen mit Bob
+                \end{itemize}
+            }
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \slidehead
+    \vspace{-1em}
+    \Large
+    \begin{columns}[c]
+        \begin{column}{.5\textwidth}
+            \centering
+            \textbf{Bob} \newline
+            \includegraphics[height = 3em]{../pictures/amogos} \newline
+            Anwendung, die das Package \textbf{impostor-detector} benötigt
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \centering
+            \textbf{Alice} \newline
+            \includesvg[height = 3em]{../pictures/arch} \newline
+            kein \textbf{impostor-detector} installiert $\rightarrow$ Problem
+        \end{column}
+    \end{columns}
+    \begin{itemize}[<+->]
+        \item Bob lädt den Quellcode in eine \textbf{Git-Repository}
+        \item Alice pullt diesen
+        \item Alice kann nur mit Mühe sich impostor-detector direkt aus dem Quellcode kompilieren und installieren
+    \end{itemize}
+\end{frame}
+
+\subsection{Anderes Beispiel}
+\begin{frame}
+    \slidehead
+    \vspace{-1em}
+    \Large
+    \begin{itemize}[<+->]
+        \item Alice hat mit Mühe und Not das Projekt erfolgreich zum Laufen gebracht
+        \item Jetzt stößt sie jedoch auf einen Fehler den Bob nicht reproduzieren kann
+        \item Anstatt das beide jetzt ewig Zeit verschwenden, könnten sie Docker benutzt haben
+    \end{itemize}
+\end{frame}
+
+\subsection{Aber warum Docker?}
+\begin{frame}
+    \slidehead
+    \vspace{-1em}
+    \Large
+    \begin{itemize}[<+->]
+        \item Mit Docker hätte sich Alice nicht mühevoll das Package beschaffen müssen,
+              da alle Dependencies in einem \textbf{Docker-Image} enthalten sind.
+        \item Der Fehler hätte von Bob reproduziert werden können, da \textbf{Docker-Container}
+              auf jeglichen Systemen reproduzierbar sind
+        \item Und viele weiteren Features, wie \textbf{Isolierung}, \textbf{Skalierung}, ...
+    \end{itemize}
+
+\end{frame}
+
+
+
+

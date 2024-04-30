@@ -1,0 +1,21 @@
+%! suppress = MissingImport
+\RequirePackage{import}
+\subimport{../common}{preamble}
+\subimport{../common}{packages}
+\begin{document}
+
+\section{Introduction}\label{sec:introduction}
+
+\begin{frame}[c]
+    \centering
+    \Huge
+    \textbf{Docker \& K8S}
+    \\
+    \vspace{1ex}
+    \Large
+    \textcolor{orange}{Ab in den Wolken}
+\end{frame}
+\subimport{../chapters}{why-docker.tex}
+\subimport{../chapters}{docker-runtime.tex}
+
+\end{document}
