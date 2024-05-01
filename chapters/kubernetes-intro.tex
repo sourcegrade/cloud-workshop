@@ -1,0 +1,39 @@
+\section{Kubernetes-Intro}
+\subsection{Ich will mehr}
+
+\begin{frame}
+    \slidehead
+    \Large
+    \centering
+    Was tun, wenn man mehrere Rechnerknoten automatisiert mit Containern bespielen will,
+    damit man das nicht immer alles selbst machen muss. \\
+    \vspace{3em}
+    Zum Glück gibt es \textbf{Kubernetes}
+\end{frame}
+
+\begin{frame}
+    \slidehead
+    \Large
+    \begin{itemize}[<+->]
+        \item Kann aus beliebigen Rechnerknoten gebaut werden
+        \item Falls korrekt eingerichtet auch redundant
+        \item Eingebautes Load-Balancing zwischen nodes
+        \item Benutzt wie Docker die gleichen Container
+        \item Konzept wie bei Docker, nur auf mehreren Nodes
+        \item Braucht andere konzepte, da Container möglichst stateless zur Skalierung sein sollen.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \includesvg[height = 19em]{../pictures/components-of-kubernetes-smaller.svg}
+\end{frame}
+\begin{frame}
+    \centering
+    \includesvg[height = 19em]{../pictures/components-of-kubernetes-edit.svg}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \includegraphics[height=18em]{../pictures/k8s-1.30.png} \\
+\end{frame}
