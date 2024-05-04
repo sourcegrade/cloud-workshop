@@ -1,0 +1,49 @@
+\section{Kubectl}
+\subsection{Wie steuer ich mein Cluster?}
+\begin{frame}
+    \slidehead
+    \Large
+    \centering
+    Die Cluster-Verwaltung wird mit dem command-line-tool
+    \bashcommand{kubectl}
+    gemacht.
+\end{frame}
+
+\begin{frame}
+    \slidehead
+    \vspace{-0.5em}
+    \bashcommand{kubectl get nodes}
+    gibt die aktuellen nodes aus dem Cluster zurück und deren Status
+    \bashcommand{kubectl get pods}
+    gibt die aktuell existierenden Container zurück inklusive Status
+    \bashcommand{kubectl describe node|pod IDENTIFIER}
+    Gibt den kompletten Status von dem jeweiligem Objekt(Node oder Pod) zurück
+\end{frame}
+
+\subsection{Deployments deployen}
+\begin{frame}
+    \slidehead
+    \vspace{-0.5em}
+    \Large
+    \begin{center}
+    Wie deploy ich jetzt Dinge auf dem Cluster?
+    \normalsize
+    
+    \bashcommand{kubectl apply -f deployment.yaml}
+    \vspace{1em}
+    \bashcommand{kubectl delete -f deployment.yaml}
+    entfernt das Deployment aus dem Cluster
+    \end{center}
+\end{frame}
+
+\subsection{Netzwerkoverlay}
+\begin{frame}
+    \slidehead
+    \Large
+    \centering
+    Die Nodes brauchen ein separates Netzwerkoverlay, um miteinander zu kommunizieren. \\
+    Flannel ist eine simple Lösung ohne viel Konfiguration. \\
+    Es können auch andere Netzwerkoverlays verwendet werden, die das \textbf{Container Network Interface} unterstützen
+    \normalsize
+    \bashcommand{kubectl apply -f kube-flannel.yml}
+\end{frame}
